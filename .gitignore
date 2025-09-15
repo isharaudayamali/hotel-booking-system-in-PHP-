@@ -1,0 +1,70 @@
+# Node modules (if using npm for Bootstrap or SCSS tools)
+node_modules/
+
+# SCSS build artifacts
+*.css.map
+*.scssc
+.sass-cache/
+
+# Compiled CSS (if generated from SCSS)
+public/css/*.css
+assets/css/*.css
+
+# Bootstrap dist (if downloaded manually)
+bootstrap/
+bootstrap-*/dist/
+
+# PHP environment files
+.env
+.env.local
+.env.*.php
+
+# MySQL dumps or temp files
+*.sql
+*.sql.gz
+*.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Cache and logs
+cache/
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Image assets (optional: ignore raw or temp files)
+assets/images/raw/
+assets/images/temp/
+*.psd
+*.xcf
+
+# Font files (optional: ignore source or temp)
+assets/fonts/source/
+*.ttf
+*.otf
+*.woff
+*.woff2
+
+# Build output (if using Gulp/Webpack)
+dist/
+build/
+public/
+
+# Composer dependencies (if using PHP Composer)
+vendor/
+
+# HTML templates (optional: if generated dynamically)
+templates_c/
+*.html.bak
