@@ -10,12 +10,12 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); 
 
-    $insert = $conn->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :mypassword)");
+    $insert = $conn->prepare("INSERT INTO users (username, email, MYpassword) VALUES (:username, :email, :mypassword)");
     
     $insert->execute([
-      ':username' => $username,
-      ':email' => $email,
-      ':mypassword' => $password
+      ":username" => $username,
+      ":email" => $email,
+      ":mypassword" => $password
     ]);
 
     header("location: login.php");
