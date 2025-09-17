@@ -2,6 +2,11 @@
 <?php require "../config/config.php" ?>
 <?php
 
+if (!isset($_SESSION['username'])) {
+  
+  echo "<script>window.location.href'".APPURL."'</script>";
+}
+
 if (isset($_POST['submit'])) {
   if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password'])) {
     echo "<script >('one or more input are empty')</script>";

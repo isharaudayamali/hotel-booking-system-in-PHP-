@@ -2,6 +2,11 @@
 <?php require "../config/config.php" ?>
 
 <?php
+
+if (!isset($_SESSION)) {
+  echo "<script>window.location.href'".APPURL."'</script>";
+}
+
 if (isset($_POST['submit'])) {
   if (empty($_POST['email']) || empty($_POST['password'])) {
     echo "<script >alert('one or more input are empty')</script>";
@@ -40,7 +45,7 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<div class="hero-wrap js-fullheight" style="background-image: url('<?php echo APPURL; ?> /images/image_2.jpg');" data-stellar-background-ratio="0.5">
+<div class="hero-wrap js-fullheight" style="background-image: url('<?php echo APPURL; ?>/images/image_2.jpg');" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
