@@ -1,4 +1,15 @@
 <?php require "includes/header.php"; ?>
+<?php require "config/config.php"; ?>
+
+<?php
+
+	$hotels = $conn->query("SELECT * FROM hotels WHERE status = 1");
+	$hotels->execute();
+
+	$allHotels = $hotels->fetchAll(PDO::FETCH_OBJ);
+
+
+?>
 
     <div class="hero-wrap js-fullheight" style="background-image: url('images/image_2.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
@@ -17,39 +28,19 @@
     <section class="ftco-section ftco-services">
     	<div class="container">
     		<div class="row">
+				<?php foreach($allHotels as $hotel): ?>
           <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
             <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(images/services-1.jpg);"></div>
+              <div class="img" style="background-image: url(images/<?php echo $hotel->image; ?>);"></div>
               <div class="media-body py-4 px-3">
-                <h3 class="heading">Sheraton</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                <p>Location: Cairo.</p>
-                <p><a href="rooms.html" class="btn btn-primary">View rooms</a></p>
+                <h3 class="heading"><?php echo $hotel->name; ?></h3>
+                <p><?php echo $hotel->description; ?></p>
+                <p>Location: <?php echo $hotel->location; ?></p>
+                <p><a href="rooms.php" class="btn btn-primary">View rooms</a></p>
               </div>
             </div>      
           </div>
-          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
-            <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(images/image_4.jpg);"></div>
-              <div class="media-body py-4 px-3">
-                <h3 class="heading">The Plaza Hote</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-				<p>Location: New york.</p>
-                <p><a href="#" class="btn btn-primary">View rooms</a></p>
-              </div>
-            </div>    
-          </div>
-          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
-            <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(images/image_4.jpg);"></div>
-              <div class="media-body py-4 px-3">
-                <h3 class="heading">The Ritz</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-				<p>Location: Paris.</p>
-                <p><a href="#" class="btn btn-primary">View rooms</a></p>
-              </div>
-            </div>      
-          </div>
+		  <?php endforeach; ?>
         </div>
     	</div>
     </section>
