@@ -3,8 +3,10 @@
 
 <?php
 
-if (!isset($_SESSION)) {
-  echo "<script>window.location.href'".APPURL."'</script>";
+// If already logged in, send user to home
+if (isset($_SESSION['username'])) {
+  echo "<script>window.location.href='".APPURL."';</script>";
+  exit;
 }
 
 if (isset($_POST['submit'])) {
@@ -15,30 +17,27 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    //validation
+  // validation + secure lookup
+  $login = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
+  $login->execute(['email' => $email]);
+  $fetch = $login->fetch(PDO::FETCH_ASSOC);
 
-    $login = $conn->query("SELECT * FROM users WHERE email = '$email'");
-    $login->execute();
-
-    $fetch = $login->fetch(PDO::FETCH_ASSOC);
-
-    //get the row count 
-
-    if ($login->rowCount() > 0) {
+  if ($fetch) {
 
       if (password_verify($password, $fetch['mypassword'])){
         //echo "<script>alert('logged in ')</script>";
 
-        $_SESSION['username'] = $fetch['username'];
-        $_SESSION['id'] = $fetch['id'];
-
-        header("location: ".APPURL."");
+  $_SESSION['username'] = $fetch['username'];
+  $_SESSION['user_id'] = $fetch['id'];
+  // Avoid header() since header.php already output HTML
+  echo "<script>window.location.href='".APPURL."';</script>";
+  exit;
 
       } else {
-        echo "<script>('email or password is wrong')</script>";
+  echo "<script>alert('email or password is wrong')</script>";
       }
     }else {
-      echo "<script>('email or password is wrong')</script>";
+  echo "<script>alert('email or password is wrong')</script>";
     }
   }
 }
