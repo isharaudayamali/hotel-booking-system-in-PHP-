@@ -47,6 +47,17 @@ if (isset($_GET['id'])) {
 				$full_name = $_POST['full_name'];       // maps to DB column 'fullname'
 				$room_name = $singleRoom->name;
 				$hotel_name = $singleRoom->hotel_name;
+				$status = "pending";
+
+				// Calculate total price = price per night * number of nights
+				$inDateObj = (new DateTime())->setTimestamp($check_in_ts);
+				$outDateObj = (new DateTime())->setTimestamp($check_out_ts);
+				$nights = (int)$inDateObj->diff($outDateObj)->format('%a');
+				if ($nights < 1) { $nights = 1; }
+				$totalPrice = (float)$singleRoom->price * $nights;
+				// Store for payment page (formatted as string with 2 decimals)
+				$_SESSION['price'] = number_format($totalPrice, 2, '.', '');
+
 				// Ensure user is logged in
 				if (empty($_SESSION['user_id'])) {
 					echo "<script>alert('Please log in to book a room.'); window.location.href='" . APPURL . "/auth/login.php';</script>";
@@ -54,11 +65,11 @@ if (isset($_GET['id'])) {
 				}
 				$user_id = $_SESSION['user_id'];
 
-				// Notice 'full_name' is now used in both the column list and the parameter list
+				// keep $_SESSION['price'] set to total (do not override)
 
 				// Use column names that match your table: full_name, phone_number
-				$booking = $conn->prepare("INSERT INTO bookings (user_id, hotel_name, room_name, email, full_name, phone_number, check_in, check_out)
-				 VALUES(:user_id, :hotel_name, :room_name, :email, :full_name, :phone_number, :check_in, :check_out)");
+				$booking = $conn->prepare("INSERT INTO bookings (user_id, hotel_name, room_name, email, full_name, phone_number, check_in, check_out, status, payment)
+				 VALUES(:user_id, :hotel_name, :room_name, :email, :full_name, :phone_number, :check_in, :check_out, :status, :payment)");
 
 				$booking->execute([
 					':user_id' => $user_id,
@@ -69,10 +80,16 @@ if (isset($_GET['id'])) {
 					':phone_number' => $phone_number,
 					':check_in' => $check_in_for_db,
 					':check_out' => $check_out_for_db,
+					':status' => $status,
+					':payment' => $_SESSION['price']
+
 				]);
 
 				// Add a success message
 				echo "<script>alert('Booking successful!')</script>";
+				//echo "<script>window.location.href='pay.php';</script>";
+				 echo "<script>window.location.href='".APPURL."/rooms/pay.php';</script>";
+
 			}
 		}
 	}
@@ -179,7 +196,6 @@ if (isset($_GET['id'])) {
 								</div>
 							</div>
 						<?php endforeach; ?>
-
 					</div>
 				</div>
 			</div>
