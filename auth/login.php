@@ -5,7 +5,7 @@
 
 // If already logged in, send user to home
 if (isset($_SESSION['username'])) {
-  echo "<script>window.location.href='".APPURL."';</script>";
+        echo "<script>window.location.href='".APPURL."';</script>";
   exit;
 }
 

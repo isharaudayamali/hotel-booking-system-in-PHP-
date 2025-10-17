@@ -1,5 +1,14 @@
 <?php require_once '../config/config.php'; ?>
 <?php require_once '../includes/header.php'; ?>
+
+<?php
+  if(!isset($_SERVER['HTTP_REFERER'])){
+        // redirect them to your desired location
+        header('location: '.APPURL.'/index.php');
+        exit;
+    }
+?>
+
 <?php
 $amount = isset($_SESSION['price']) ? number_format((float)$_SESSION['price'], 2, '.', '') : '0.00';
 ?>
