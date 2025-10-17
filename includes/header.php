@@ -60,7 +60,7 @@ define("APPURL", "http://localhost/hotel-booking/");
 			</button>
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+					<li class="nav-item active"><a href="<?php echo APPURL; ?>" class="nav-link">Home</a></li>
 					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 					<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
 					<li class="nav-item"><a href="rooms.html" class="nav-link">Apartment Room</a></li>
@@ -74,8 +74,8 @@ define("APPURL", "http://localhost/hotel-booking/");
 								<?php echo $_SESSION['username']; ?>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li><a class="dropdown-item" href="<?php echo APPURL; ?>/users/bookings.php?id=<?php echo $_SESSION['id']; ?>">Your Bookings</a></li>
+								<!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
 								<li>
 									<hr class="dropdown-divider">
 								</li>
@@ -88,4 +88,3 @@ define("APPURL", "http://localhost/hotel-booking/");
 			</div>
 		</div>
 	</nav>
-	<!-- END nav -->
