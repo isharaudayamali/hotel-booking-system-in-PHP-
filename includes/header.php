@@ -74,7 +74,7 @@ define("APPURL", "http://localhost/hotel-booking/");
 								<?php echo $_SESSION['username']; ?>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="<?php echo APPURL; ?>/users/bookings.php?id=<?php echo $_SESSION['id']; ?>">Your Bookings</a></li>
+								<li><a class="dropdown-item" href="<?php echo APPURL; ?>/users/bookings.php?id=<?php echo $_SESSION['user_id']; ?>">Your Bookings</a></li>
 								<!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
 								<li>
 									<hr class="dropdown-divider">
