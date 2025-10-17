@@ -9407,6 +9407,17 @@ footer {
   animation: loader-dash 1.5s ease-in-out infinite;
   stroke-linecap: round; }
 
+   /* Scoped styles for this page only */
+  .pay-hero .subheading {
+    color: #fff;
+    font-size: 39px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.35);
+  }
+
 @-webkit-keyframes loader-rotate {
   100% {
     -webkit-transform: rotate(360deg);

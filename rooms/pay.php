@@ -1,6 +1,7 @@
 <?php require_once '../config/config.php'; ?>
 <?php require_once '../includes/header.php'; ?>
 
+
 <?php
   if(!isset($_SERVER['HTTP_REFERER'])){
         // redirect them to your desired location
@@ -13,7 +14,8 @@
 $amount = isset($_SESSION['price']) ? number_format((float)$_SESSION['price'], 2, '.', '') : '0.00';
 ?>
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('<?php echo APPURL; ?>/images/image_2.jpg');" data-stellar-background-ratio="0.5">
+
+  <div class="hero-wrap js-fullheight pay-hero" style="background-image: url('<?php echo APPURL; ?>/images/image_2.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
