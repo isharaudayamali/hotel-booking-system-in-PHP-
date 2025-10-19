@@ -27,6 +27,8 @@ if (isset($_GET['id'])) {
 }
 ?>
 <div class="container">
+  <?php if(count($allBookings) > 0): ?>
+    <h2 class="mt-5 text-center">My Bookings</h2>
 <table class="table mt-5">
   <thead>
     <tr>
@@ -60,6 +62,10 @@ if (isset($_GET['id'])) {
     <?php endforeach; ?>
   </tbody>
 </table>
+<?php else: ?>
+    <div class="alert alert-primary mt-5" role="alert">No Bookings Found</div>
+<?php endif; ?>
+
 </div>
 
 <?php require "../includes/footer.php" ?>
