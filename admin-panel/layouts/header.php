@@ -38,13 +38,13 @@ define("ADMINURL", "http://localhost/hotel-booking/admin-panel");
             <a class="nav-link" href="<?php echo ADMINURL; ?>/admins/admins.php" style="margin-left: 20px;">Admins</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo ADMINURL; ?>/hotels-admins/show-hotels.html" style="margin-left: 20px;">Hotels</a>
+            <a class="nav-link" href="<?php echo ADMINURL; ?>/hotels-admins/show-hotels.php" style="margin-left: 20px;">Hotels</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo ADMINURL; ?>/rooms-admins/show-rooms.html" style="margin-left: 20px;">Rooms</a>
+            <a class="nav-link" href="<?php echo ADMINURL; ?>/rooms-admins/show-rooms.php" style="margin-left: 20px;">Rooms</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo ADMINURL; ?>/bookings-admins/show-bookings.html" style="margin-left: 20px;">Bookings</a>
+            <a class="nav-link" href="<?php echo ADMINURL; ?>/bookings-admins/show-bookings.php" style="margin-left: 20px;">Bookings</a>
           </li>
         </ul>
         <?php endif; ?>
