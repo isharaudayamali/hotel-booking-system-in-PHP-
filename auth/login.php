@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
   $login->execute(['email' => $email]);
   $fetch = $login->fetch(PDO::FETCH_ASSOC);
 
-  if ($fetch) {
+  if ($login->rowCount() > 0) {
 
       if (password_verify($password, $fetch['mypassword'])){
         //echo "<script>alert('logged in ')</script>";
