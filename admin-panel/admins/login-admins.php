@@ -4,9 +4,8 @@
 <?php
 
 // If already logged in, send user to home
-if (isset($_SESSION['username'])) {
-  echo "<script>window.location.href='" . APPURL . "';</script>";
-  exit;
+if (isset($_SESSION['adminname'])) {
+  echo "<script>window.location.href='" . ADMINURL . "';</script>";
 }
 
 if (isset($_POST['submit'])) {
@@ -27,13 +26,11 @@ if (isset($_POST['submit'])) {
       if (password_verify($password, $fetch['mypassword'])) {
 
         $_SESSION['adminname'] = $fetch['adminname'];
-        $_SESSION['admin_id'] = $fetch['id'];
+        $_SESSION['id'] = $fetch['id'];
 
-        echo "<script>alert('Logged in successfully!'); window.location.href='".ADMINURL."/admin-panel';</script>";
+        echo "<script>alert('Logged in successfully!'); window.location.href='".ADMINURL."';</script>";
         exit;
 
-      } else {
-        echo "<script>alert('email or password is wrong')</script>";
       }
     } else {
       echo "<script>alert('email or password is wrong')</script>";
