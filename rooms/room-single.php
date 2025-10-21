@@ -155,12 +155,16 @@ if (isset($_GET['id'])) {
 						</div>
 
 
-
+						<?php if(isset($_SESSION['user_name'])) : ?>
 						<div class="col-md-12">
 							<div class="form-group">
 								<input type="submit" name="submit" value="Book and Pay Now" class="btn btn-primary py-3 px-4">
 							</div>
 						</div>
+						<?php else : ?>
+							<p>Login in order to book a room </p>
+						<?php endif; ?>
+
 					</div>
 				</form>
 			</div>

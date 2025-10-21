@@ -2,8 +2,8 @@
 
 session_start();
 define("APPURL", "http://localhost/hotel-booking/");
-
-
+define("HOTELSIMAGES", APPURL . "hotels-admins/hotels-images");
+define("ROOMSSIMAGES", APPURL . "hotels-admins/rooms-images");
 ?>
 
 <!DOCTYPE html>
