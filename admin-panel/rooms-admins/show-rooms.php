@@ -19,7 +19,7 @@ $allRooms = $rooms->fetchAll(PDO::FETCH_OBJ);
           <div class="card">
             <div class="card-body">
               <h5 class="card-title mb-4 d-inline">Rooms</h5>
-             <a  href="create-rooms.html" class="btn btn-primary mb-4 text-center float-right">Create Room</a>
+             <a  href="create-rooms.php" class="btn btn-primary mb-4 text-center float-right">Create Room</a>
               <table class="table">
                 <thead>
                   <tr>
@@ -42,8 +42,8 @@ $allRooms = $rooms->fetchAll(PDO::FETCH_OBJ);
                     <th scope="row"><?php echo $room->id; ?></th>
                     <td><?php echo $room->name; ?></td>
                     <td>$<?php echo $room->price; ?></td>
-                    <td><?php echo $room->num_persons; ?></td>
-                    <td><?php echo $room->size; ?></td>
+                    <td><?php echo $room->num_persons; ?> persons</td>
+                    <td><?php echo $room->size; ?> m</td>
                     <td><?php echo $room->view; ?></td>
                     <td><?php echo $room->num_beds; ?></td>
                     <td><?php echo $room->hotel_name; ?></td>

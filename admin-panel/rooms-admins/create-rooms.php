@@ -1,72 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>Admin Panel</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-     <link href="../styles/style.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div id="wrapper">
-    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
-      <div class="container">
-      <a class="navbar-brand" href="#">LOGO</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<?php require '../layouts/header.php'; ?>
+<?php require "../../config/config.php" ?>
 
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav side-nav" >
-          <li class="nav-item">
-            <a class="nav-link" style="margin-left: 20px;" href="../index.html">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../admins/admins.html" style="margin-left: 20px;">Admins</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../hotels-admins/show-hotels.html" style="margin-left: 20px;">Hotels</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../rooms-admins/show-rooms.html" style="margin-left: 20px;">Rooms</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../bookings-admins/show-bookings.html" style="margin-left: 20px;">Bookings</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-md-auto d-md-flex">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              username
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Logout</a>
-              
-          </li>
-                          
-          
-        </ul>
-      </div>
-    </div>
-    </nav>
-    <div class="container-fluid">
+<?php
+
+if (!isset($_SESSION['adminname'])) {
+  echo "<script>window.location.href='" . ADMINURL . "admins/login-admins.php';</script>";
+}
+
+$hotels = $conn->query("SELECT * FROM hotels");
+$hotels->execute();
+
+$allHotels = $hotels->fetchAll(PDO::FETCH_OBJ);
+
+
+  if (isset($_POST['submit'])) {
+    if (empty($_POST['name']) || empty($_POST['price']) ||
+        empty($_FILES['image']['name']) ||
+        empty($_POST['num_persons']) || 
+        empty($_POST['num_beds']) || 
+        empty($_POST['size']) || 
+        empty($_POST['view']) || 
+        empty($_POST['hotel_name']) || 
+        empty($_POST['hotel_id'])) {
+
+      echo "<script>alert('One or more fields are empty');</script>";
+    } else {
+      $name = $_POST['name'];
+      $price = $_POST['price'];
+      $num_persons = $_POST['num_persons'];
+      $num_beds = $_POST['num_beds'];
+      $size = $_POST['size'];
+      $view = $_POST['view'];
+      $hotel_name = $_POST['hotel_name'];
+      $hotel_id = $_POST['hotel_id'];
+      $status = 1; // default to active
+      $image = $_FILES['image']['name'];
+
+      $dir = "room_images/" . basename($image);
+
+      $insert = $conn->prepare("INSERT INTO rooms (name, price, num_persons, num_beds, size, view, hotel_name, hotel_id, status, image)
+      VALUES (:name, :price, :num_persons, :num_beds, :size, :view, :hotel_name, :hotel_id, :status, :image)");
+
+      $insert->execute([
+        ":name" => $name,
+        ":price" => $price,
+        ":num_persons" => $num_persons,
+        ":image" => $image,
+        ":num_beds" => $num_beds,
+        ":size" => $size,
+        ":view" => $view,
+        ":hotel_name" => $hotel_name,
+        ":hotel_id" => $hotel_id,
+        ":status" => $status
+      ]);
+
+      if (move_uploaded_file($_FILES['image']['tmp_name'], $dir)) {
+        echo "<script>alert('Room created successfully!'); window.location.href='show-rooms.php';</script>";
+        exit;
+      } else {
+        echo "<script>alert('File upload failed. Please try again.');</script>";
+      }
+    }
+  }
+
+?>
        <div class="row">
         <div class="col">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title mb-5 d-inline">Create Rooms</h5>
-          <form method="POST" action="" enctype="multipart/form-data">
+          <form method="POST" action="create-rooms.php" enctype="multipart/form-data">
                 <!-- Email input -->
                 <div class="form-outline mb-4 mt-4">
                   <input type="text" name="name" id="form2Example1" class="form-control" placeholder="name" />
@@ -94,21 +97,21 @@
                 </div> 
                <div class="form-outline mb-4 mt-4">
                 <input type="text" name="view" id="form2Example1" class="form-control" placeholder="view" />
-               
-               </div> 
-               <select class="form-control">
-                <option>Choose Hotel Name</option>
-                <option>Sheraton</option>
-                <option>The Plaza Hotel</option>
-                <option>The Ritz</option>
+               </div>
+
+               <select name="hotel_name" class="form-control">
+               <option>Choose Hotel Name</option>
+                <?php foreach($allHotels as $hotel): ?>
+               <option value="<?php echo $hotel->name; ?>"><?php echo $hotel->name; ?></option>
+               <?php endforeach; ?>
                </select>
                <br>
    
-               <select class="form-control">
-                <option>Choose Same Hotel Once Again</option>
-                <option>Sheraton</option>
-                <option>The Plaza Hotel</option>
-                <option>The Ritz</option>
+               <select  name="hotel_id" class="form-control">
+                <option>Choose Same Hotel ID</option>
+                <?php foreach($allHotels as $hotel): ?>
+                <option value="<?php echo $hotel->id; ?>"><?php echo $hotel->name; ?></option>
+               <?php endforeach; ?>
                </select>
                <br>
 
