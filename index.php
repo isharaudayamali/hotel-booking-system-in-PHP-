@@ -1,6 +1,7 @@
 <?php require "includes/header.php"; ?>
 <?php require "config/config.php"; ?>
 
+
 <?php
 //hotels
 	$hotels = $conn->query("SELECT * FROM hotels WHERE status = 1");
@@ -36,7 +37,7 @@
 				<?php foreach($allHotels as $hotel): ?>
           <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
             <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(images/<?php echo $hotel->image; ?>);"></div>
+              <div class="img" style="background-image: url(admin-panel/hotels-admins/hotels-images/<?php echo $hotel->image; ?>);"></div>
               <div class="media-body py-4 px-3">
                 <h3 class="heading"><?php echo $hotel->name; ?></h3>
                 <p><?php echo $hotel->description; ?></p>
@@ -94,7 +95,11 @@
 						<div class="img img-2 mb-4" style="background-image: url(images/image_2.jpg);">
 						</div>
 						<h2>The most recommended vacation rental</h2>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+						<p>While there are lots of creative and luxurious amenities examples hotels are known for, a comfortable 
+							stay for your guests always starts with the essential ones. The useful facilities in a hotel range 
+							from personal care items to free parking & Wi-Fi. As hotel essentials, they are expected by guests in 
+							the rooms in all cases. Thus, the amenities hotel offers that are listed below can often heavily influence 
+							the first impression your guests have.</p>
 					</div>
 					<div class="col-md-6 wrap-about ftco-animate">
 	          <div class="heading-section">
@@ -105,7 +110,7 @@
 	          <div class="pl-md-5">
 							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 							<div class="row">
-		            <div class="services-2 col-lg-6 d-flex w-100">
+		            <!-- <div class="services-2 col-lg-6 d-flex w-100">
 		              <div class="icon d-flex justify-content-center align-items-center">
 		            		<span class="flaticon-diet"></span>
 		              </div>
@@ -113,14 +118,14 @@
 		                <h3 class="heading">Tea Coffee</h3>
 		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
 		              </div>
-		            </div> 
+		            </div>  -->
 		            <div class="services-2 col-lg-6 d-flex w-100">
 		              <div class="icon d-flex justify-content-center align-items-center">
 		            		<span class="flaticon-workout"></span>
 		              </div>
 		              <div class="media-body pl-3">
-		                <h3 class="heading">Hot Showers</h3>
-		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+		                <h3 class="heading">Free parking space</h3>
+		                <p>providing a safe parking space for your guests is a must. Furthermore, if you run a hotel providing a luxury environment, consider investing in valet parking. It will increase your guests’ trust and loyalty even further.</p>
 		              </div>
 		            </div>
 		            <div class="services-2 col-lg-6 d-flex w-100">
@@ -128,8 +133,8 @@
 		            		<span class="flaticon-diet-1"></span>
 		              </div>
 		              <div class="media-body pl-3">
-		                <h3 class="heading">Laundry</h3>
-		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+		                <h3 class="heading">Laundry & Ironing</h3>
+		                <p>Washing and ironing services are essential for guest comfort, especially for those on extended stays. Providing these amenities can significantly enhance your hotel's reputation.</p>
 		              </div>
 		            </div>      
 		            <div class="services-2 col-lg-6 d-flex w-100">
@@ -138,7 +143,7 @@
 		              </div>
 		              <div class="media-body pl-3">
 		                <h3 class="heading">Air Conditioning</h3>
-		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+		                <p>Ensuring the best climate in all hotel rooms can’t be done without air conditioning equipment. Guests usually stay at your hotel in the warm or cold seasons, providing them with properly functioning heating and air conditioning amenities examples is as important as delivering fresh bed linens daily.</p>
 		              </div>
 		            </div>
 		            <div class="services-2 col-lg-6 d-flex w-100">
@@ -147,10 +152,10 @@
 		              </div>
 		              <div class="media-body pl-3">
 		                <h3 class="heading">Free Wifi</h3>
-		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+		                <p>Access to a hotel’s Wi-Fi network is arguably one of the most widespread hotel essentials today. Whether your guests are traveling on business or for local sightseeing, when staying at a hotel everyone expects a free & stable Wi-fi connection available at all times.</p>
 		              </div>
 		            </div> 
-		            <div class="services-2 col-lg-6 d-flex w-100">
+		            <!-- <div class="services-2 col-lg-6 d-flex w-100">
 		              <div class="icon d-flex justify-content-center align-items-center">
 		            		<span class="flaticon-first"></span>
 		              </div>
@@ -158,23 +163,24 @@
 		                <h3 class="heading">Kitchen</h3>
 		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
 		              </div>
+		            </div>  -->
+		            <div class="services-2 col-lg-6 d-flex w-100">
+		              <div class="icon d-flex justify-content-center align-items-center">
+		            		<span class="flaticon-first"></span>
+		              </div>
+		              <div class="media-body pl-3">
+		                <h3 class="heading">Free breakfast</h3>
+		                <p>To provide this kind of convenience is a free breakfast. Note that some hotels may provide breakfast for free depending 
+							on the star rating. Still, this amenity ensures that your day will start on a high note.</p>
+		              </div>
 		            </div> 
 		            <div class="services-2 col-lg-6 d-flex w-100">
 		              <div class="icon d-flex justify-content-center align-items-center">
 		            		<span class="flaticon-first"></span>
 		              </div>
 		              <div class="media-body pl-3">
-		                <h3 class="heading">Ironing</h3>
-		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
-		              </div>
-		            </div> 
-		            <div class="services-2 col-lg-6 d-flex w-100">
-		              <div class="icon d-flex justify-content-center align-items-center">
-		            		<span class="flaticon-first"></span>
-		              </div>
-		              <div class="media-body pl-3">
-		                <h3 class="heading">Lovkers</h3>
-		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+		                <h3 class="heading">TV & telephone</h3>
+		                <p>Providing a TV and telephone in each room is essential for guest comfort. While many guests may have their own devices, having a reliable landline and a TV with various channels can enhance their stay.</p>
 		              </div>
 		            </div>
 		          </div>  
