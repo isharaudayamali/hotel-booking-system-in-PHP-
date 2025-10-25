@@ -53,7 +53,9 @@ if (isset($_GET['id'])) {
 				$inDateObj = (new DateTime())->setTimestamp($check_in_ts);
 				$outDateObj = (new DateTime())->setTimestamp($check_out_ts);
 				$nights = (int)$inDateObj->diff($outDateObj)->format('%a');
-				if ($nights < 1) { $nights = 1; }
+				if ($nights < 1) {
+					$nights = 1;
+				}
 				$totalPrice = (float)$singleRoom->price * $nights;
 				// Store for payment page (formatted as string with 2 decimals)
 				$_SESSION['price'] = number_format($totalPrice, 2, '.', '');
@@ -67,34 +69,49 @@ if (isset($_GET['id'])) {
 
 				// keep $_SESSION['price'] set to total (do not override)
 
-				// Use column names that match your table: full_name, phone_number
-				$booking = $conn->prepare("INSERT INTO bookings (user_id, hotel_name, room_name, email, full_name, phone_number, check_in, check_out, status, payment)
-				 VALUES(:user_id, :hotel_name, :room_name, :email, :full_name, :phone_number, :check_in, :check_out, :status, :payment)");
+				// Sanitize and validate phone number to avoid DB errors (too long or invalid characters)
+				$phone_number = trim($_POST['phone_number']);
+				// Allow digits, spaces, plus, hyphen and parentheses only
+				$phone_number = preg_replace('/[^0-9\+\-\(\) ]/', '', $phone_number);
+				$maxPhoneLen = 20; // adjust if your DB column is larger
+				if (strlen($phone_number) > $maxPhoneLen) {
+					echo "<script>alert('Phone number too long (max {$maxPhoneLen} characters). Please shorten it.')</script>";
+				} elseif (!preg_match('/^[0-9\+\-\(\) ]+$/', $phone_number)) {
+					echo "<script>alert('Phone number contains invalid characters. Only digits, space, +, -, ( and ) are allowed.')</script>";
+				} else {
+					// Use column names that match your table: full_name, phone_number
+					$booking = $conn->prepare("INSERT INTO bookings (user_id, hotel_name, room_name, email, full_name, phone_number, check_in, check_out, status, payment)
+					 VALUES(:user_id, :hotel_name, :room_name, :email, :full_name, :phone_number, :check_in, :check_out, :status, :payment)");
 
-				$booking->execute([
-					':user_id' => $user_id,
-					':hotel_name' => $hotel_name,
-					':room_name' => $room_name,
-					':email' => $email,
-					':full_name' => $full_name,
-					':phone_number' => $phone_number,
-					':check_in' => $check_in_for_db,
-					':check_out' => $check_out_for_db,
-					':status' => $status,
-					':payment' => $_SESSION['price']
+					try {
+						$booking->execute([
+							':user_id' => $user_id,
+							':hotel_name' => $hotel_name,
+							':room_name' => $room_name,
+							':email' => $email,
+							':full_name' => $full_name,
+							':phone_number' => $phone_number,
+							':check_in' => $check_in_for_db,
+							':check_out' => $check_out_for_db,
+							':status' => $status,
+							':payment' => $_SESSION['price']
 
-				]);
+						]);
 
-				// Add a success message
-				echo "<script>alert('Booking successful!')</script>";
-				//echo "<script>window.location.href='pay.php';</script>";
-				 echo "<script>window.location.href='".APPURL."/rooms/pay.php';</script>";
-
+						// Add a success message and redirect to payment
+						echo "<script>alert('Booking successful!')</script>";
+						echo "<script>window.location.href='" . APPURL . "/rooms/pay.php';</script>";
+					} catch (PDOException $e) {
+						// Log the error for the developer and show a generic message to the user
+						error_log('Booking insert error: ' . $e->getMessage());
+						echo "<script>alert('Booking failed on server. Please try again later.')</script>";
+					}
+				}
 			}
 		}
 	}
-}else{
-	echo "<script>window.location.href='".APPURL."/404.php'</script>";
+} else {
+	echo "<script>window.location.href='" . APPURL . "/404.php'</script>";
 }
 
 ?>
@@ -154,16 +171,12 @@ if (isset($_GET['id'])) {
 							</div>
 						</div>
 
-
-						<?php if(isset($_SESSION['user_name'])) : ?>
 						<div class="col-md-12">
 							<div class="form-group">
 								<input type="submit" name="submit" value="Book and Pay Now" class="btn btn-primary py-3 px-4">
 							</div>
 						</div>
-						<?php else : ?>
-							<p>Login in order to book a room </p>
-						<?php endif; ?>
+
 
 					</div>
 				</form>
