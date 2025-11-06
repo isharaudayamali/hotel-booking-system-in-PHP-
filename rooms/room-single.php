@@ -2,6 +2,19 @@
 <?php require_once '../includes/header.php'; ?>
 
 <?php
+
+//rooms by hotel id
+
+if (isset($_GET['id'])) {
+
+	$id = $_GET['id'];
+
+	$getRooms = $conn->query("SELECT * FROM rooms WHERE status = 1 AND hotel_id = '$id'");
+	$getRooms->execute();
+
+	$getAllRooms = $getRooms->fetchAll(PDO::FETCH_OBJ);
+}
+
 //get room by id
 if (isset($_GET['id'])) {
 	$room_id = $_GET['id'];
@@ -202,7 +215,9 @@ if (isset($_GET['id'])) {
 					</div>
 				</div>
 				<div class="pl-md-5">
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+					<?php foreach ($getAllRooms as $room): ?>
+					<p><?php echo $room->description; ?></p>
+					<?php endforeach; ?>
 					<div class="row">
 						<?php foreach ($allUtilities as $utility): ?>
 							<div class="services-2 col-lg-6 d-flex w-100">
