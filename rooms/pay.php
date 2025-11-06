@@ -23,7 +23,7 @@ $amount = isset($_SESSION['price']) ? number_format((float)$_SESSION['price'], 2
           	<h2 class="subheading">Pay Page for your Booking</h2>
              <div class="container">  
                     <!-- Replace "test" with your own sandbox Business account app client ID -->
-                    <script src="https://www.paypal.com/sdk/js?client-id=ARfHvzkvoiBKnYd1pv1UAEmjzac8Q0NPMfY5dwRtVNI47ogSr8KDo6-OpNzljht269l4MwqAMLfa0fED&currency=USD"></script>
+                    <script src=""></script>
                     <!-- Set up a container element for the button -->
                     <div id="paypal-button-container"></div>
           <script>
