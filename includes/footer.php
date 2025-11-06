@@ -3,13 +3,13 @@
 				<div class="row">
 					<div class="col-md-6 col-lg-3 mb-md-0 mb-4">
 						<h2 class="footer-heading"><a href="#" class="logo">Vacation Rental</a></h2>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+						<!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
 						<a href="#">Read more <span class="fa fa-chevron-right" style="font-size: 11px;"></span></a>
 					</div>
 					<div class="col-md-6 col-lg-3 mb-md-0 mb-4">
 						<h2 class="footer-heading">Services</h2>
 						<ul class="list-unstyled">
-              <li><a href="#" class="py-1 d-block">Map Direction</a></li>
+              <li><a href="https://maps.app.goo.gl/LCEgaWaz31R2BTar9" target="_blank" class="py-1 d-block">Map Direction</a></li>
               <li><a href="#" class="py-1 d-block">Accomodation Services</a></li>
               <li><a href="#" class="py-1 d-block">Great Experience</a></li>
               <li><a href="#" class="py-1 d-block">Perfect central location</a></li>
@@ -38,9 +38,9 @@
             </form>
             <h2 class="footer-heading mt-5">Follow us</h2>
             <ul class="ftco-footer-social p-0">
-              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
-              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
+              <li class="ftco-animate"><a href="https://twitter.com/" target="_blank" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.facebook.com/" target="_blank" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.instagram.com/" target="_blank" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
             </ul>
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 	          <div class="col-md-6 col-lg-8">
 
 	            <p class="copyright mb-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+	  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://github.com/isharaudayamali" target="_blank">isharaudayamali</a>
 	  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 	          </div>
 	          <div class="col-md-6 col-lg-4 text-md-right">
@@ -85,7 +85,7 @@
   <script src="<?php echo APPURL; ?>js/owl.carousel.min.js"></script>
   <script src="<?php echo APPURL; ?>js/jquery.magnific-popup.min.js"></script>
   <script src="<?php echo APPURL; ?>js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="<?php echo APPURL; ?>https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="<?php echo APPURL; ?>js/google-map.js"></script>
   <script src="<?php echo APPURL; ?>js/main.js"></script>
 

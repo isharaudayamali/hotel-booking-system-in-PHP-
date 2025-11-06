@@ -37,15 +37,15 @@ define("ROOMSSIMAGES", APPURL . "hotels-admins/rooms-images");
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col d-flex align-items-center">
-					<p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">091-3433320</a> or <span class="mailus">email us:</span> <a href="#">isharaudayamali220@gmail.com</a></p>
+					<p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+94 114-3433320</a> or <span class="mailus">email us:</span> <a href="#">vacationrental@gmail.com</a></p>
 				</div>
 				<div class="col d-flex justify-content-end">
 					<div class="social-media">
 						<p class="mb-0 d-flex">
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-							<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+							<a href="https://www.facebook.com/" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+							<a href="https://twitter.com/" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+							<a href="https://www.instagram.com/" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+							<a href="https://dribbble.com/" target="_blank" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
 						</p>
 					</div>
 				</div>
