@@ -69,11 +69,11 @@
     							<!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
 	    						<h3 class="mb-3"><a href="<?php echo APPURL;?>/rooms/room-single.php?id=<?php echo $room->id; ?>"><?php echo $room->name; ?></a></h3>
 	    						<ul class="list-accomodation">
-	    							<li><span>Max:</span><?php echo $room->num_persons; ?></li>
-	    							<li><span>Size:</span><?php echo $room->size; ?></li>
-	    							<li><span>View:</span> <?php echo $room->view; ?></li>
-	    							<li><span>Bed:</span> <?php echo $room->num_beds; ?></li>
-									<li><span>Price Per Night:</span> $ <?php echo $room->price; ?></li>
+	    							<li><span>Maximum Occupancy : </span><?php echo $room->num_persons; ?></li>
+	    							<li><span>Room Size : </span><?php echo $room->size; ?></li>
+	    							<li><span>View : </span><?php echo $room->view; ?></li>
+	    							<li><span>Bed : </span><?php echo $room->num_beds; ?></li>
+									<li><span>Price Per Night : </span>USD <?php echo $room->price; ?></li>
 	    						</ul>
 	    						<p class="pt-1"><a href="<?php echo APPURL;?>/rooms/room-single.php?id=<?php echo $room->id; ?>" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
     						</div>
