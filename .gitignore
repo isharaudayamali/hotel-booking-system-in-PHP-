@@ -1,70 +1,109 @@
-# Node modules (if using npm for Bootstrap or SCSS tools)
-node_modules/
-
-# SCSS build artifacts
-*.css.map
-*.scssc
-.sass-cache/
-
-# Compiled CSS (if generated from SCSS)
-public/css/*.css
-assets/css/*.css
-
-# Bootstrap dist (if downloaded manually)
-bootstrap/
-bootstrap-*/dist/
-
-# PHP environment files
+# PHP Configuration Files (SENSITIVE - NEVER COMMIT)
+config/config.php
+config/database.php
 .env
 .env.local
-.env.*.php
+.env.production
 
-# MySQL dumps or temp files
+# XAMPP/WAMP/Local Development
+.htaccess.local
+php.ini
+my.cnf
+
+# Database Files (NEVER COMMIT)
 *.sql
 *.sql.gz
 *.db
+*.sqlite
+*.sqlite3
+database/backups/
+sql_dumps/
 
-# IDE/editor settings
+# Upload Directories (User Generated Content)
+uploads/
+images/uploads/
+rooms/uploads/
+user_images/
+temp_uploads/
+
+# Session Files
+sessions/
+tmp/
+temp/
+
+# Cache and Logs
+cache/
+logs/
+*.log
+error.log
+access.log
+
+# IDE/Editor Settings
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
+*.code-workspace
 
-# OS-specific files
+# OS-Specific Files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
 
-# Cache and logs
-cache/
-logs/
-*.log
+# Node.js (if using for build tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Temporary files
+# Composer Dependencies
+vendor/
+composer.lock
+
+# Build Artifacts
+*.css.map
+*.js.map
+*.scssc
+.sass-cache/
+dist/
+build/
+
+# Temporary Files
 *.tmp
 *.bak
 *.swp
+*.swo
+*~
 
-# Image assets (optional: ignore raw or temp files)
-assets/images/raw/
-assets/images/temp/
-*.psd
-*.xcf
+# PayPal Integration (Development Keys)
+paypal_config.php
+payment_keys.php
 
-# Font files (optional: ignore source or temp)
-assets/fonts/source/
-*.ttf
-*.otf
-*.woff
-*.woff2
+# Backup Files
+*.backup
+*.orig
+backup_*
+*_backup
 
-# Build output (if using Gulp/Webpack)
-dist/
-build/
-public/
+# Security Files (API Keys, Certificates)
+*.pem
+*.key
+*.crt
+ssl/
+certificates/
+api_keys.php
 
-# Composer dependencies (if using PHP Composer)
-vendor/
+# Development Testing
+test_data/
+dummy_data/
+phpunit.xml
+.phpunit.result.cache
 
-# HTML templates (optional: if generated dynamically)
-templates_c/
-*.html.bak
+# Email Configuration
+mail_config.php
+smtp_settings.php
