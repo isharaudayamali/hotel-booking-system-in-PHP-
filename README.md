@@ -2,7 +2,7 @@
 
 A comprehensive hotel booking management system built with PHP, MySQL, and modern web technologies. This platform provides a seamless experience for both guests and hotel administrators with robust booking functionality, payment integration, and complete administrative control.
 
-![Hotel Booking System](images/image_2.jpg)
+![Hotel Booking System](images/Home.png)
 
 ## ✨ Features Overview
 
